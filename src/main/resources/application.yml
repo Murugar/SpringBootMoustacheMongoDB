@@ -1,0 +1,13 @@
+spring:
+  data:
+    mongodb:
+      port: 0
+    rest:
+      base-path: /api
+  mustache:
+    suffix: .hbs
+    cache: false
+  application:
+    name: SpringBootMoustacheMongoDB
+management:
+  context-path: /admin

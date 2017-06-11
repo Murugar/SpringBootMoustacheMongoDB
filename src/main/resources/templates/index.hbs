@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="spring boot app">
+  <meta name="keywords" content="spring,spring-boot,mongodb,mustache">
+  <meta name="author" content="Test">
+  <title>Spring Boot Moustache MongoDB</title>
+  <link rel="stylesheet" href="{{ctx}}/webjars/bootstrap/css/bootstrap.min.css">
+ 
+</head>
+
+<br/>
+<br/>
+
+<body class="container-fluid">
+<div class="panel panel-primary">
+<div class="panel-heading"><h2>Spring Boot Moustache MongoDB</h2></div>
+
+<div class="panel-body">
+
+<h1 class="text-danger">Greetings</h1>
+
+<br/>
+
+<ul class="alert alert-success">
+  {{#profiles}}<li id="{{id}}">{{name}}</li>{{/profiles}}
+</ul>
+
+</div>
+
+</div>
+</body>
+</html>
