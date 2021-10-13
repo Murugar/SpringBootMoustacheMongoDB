@@ -23,7 +23,7 @@ public class SpringBootMoustacheMongoApp {
     CommandLineRunner testData(ProfileRestRepository profiles) {
 
         return args -> Stream.of("One", "Two", "Three", "Four", "Five", "Six")
-                .map(Profile::of)
+                 .map(name -> new Profile(name))
                 .forEach(profiles::save);
     }
 

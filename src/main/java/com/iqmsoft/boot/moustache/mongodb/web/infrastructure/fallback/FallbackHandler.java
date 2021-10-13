@@ -12,6 +12,8 @@ import com.iqmsoft.boot.moustache.mongodb.web.infrastructure.Util;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
 import java.util.Optional;
 
 import static org.springframework.http.HttpStatus.NOT_FOUND;
@@ -23,12 +25,12 @@ public class FallbackHandler implements ErrorController {
 
     static final String ENDPOINT = "/error";
 
-    final ServletContext servletContext;
+    ServletContext servletContext;
 
     @SneakyThrows
     @GetMapping(ENDPOINT)
     void handle404(final HttpServletRequest request, 
-    		final HttpServletResponse response, final Exception e) {
+    		final HttpServletResponse response, final Exception e) throws IOException {
 
         if (NOT_FOUND.value() != response.getStatus()) {
             return;
@@ -38,17 +40,17 @@ public class FallbackHandler implements ErrorController {
 
             if (Optional.ofNullable(e.getMessage()).isPresent()) {
 
-                log.error("{} fallback: {} {}", e.getClass().getSimpleName(), e.getMessage());
+               // log.error("{} fallback: {} {}", e.getClass().getSimpleName(), e.getMessage());
 
             } else {
 
-                log.error("{} fallback", e.getClass().getSimpleName());
+                //log.error("{} fallback", e.getClass().getSimpleName());
             }
         });
 
-        if (log.isDebugEnabled()) {
-            log.debug(e.getMessage(), e);
-        }
+        //if (log.isDebugEnabled()) {
+            //log.debug(e.getMessage(), e);
+        //}
 
         response.sendRedirect(Util.ctx(servletContext));
     }

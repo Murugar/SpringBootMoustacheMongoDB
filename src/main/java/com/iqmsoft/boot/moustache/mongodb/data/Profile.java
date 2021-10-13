@@ -1,6 +1,8 @@
 package com.iqmsoft.boot.moustache.mongodb.data;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Generated;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -14,12 +16,17 @@ import java.io.Serializable;
 @Document
 @NoArgsConstructor
 @Accessors(chain = true)
-@RequiredArgsConstructor(staticName = "of")
+@AllArgsConstructor
+//@RequiredArgsConstructor
 public class Profile implements Serializable {
-    public static String MODEL_NAME = "profile";
+    public Profile(String name) {
+		this.name = name;
+	}
+	public static String MODEL_NAME = "profile";
     public static String MODEL_LIST_NAME = "profiles";
     private static final long serialVersionUID = 3834429806715738570L;
 
-    @Id String id;
-    @NonNull String name;
+   
+    @Id public String id;
+    @NonNull public String name;
 }
